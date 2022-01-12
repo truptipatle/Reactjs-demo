@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    
+    function Item(props) {
+
+        function checkOrUncheckCurrentItem(todoItem) {
+
+            alert('You clicked on ' + todoItem);
+
+        }
+
+
+        return (
+            <li><input type="checkbox" name="myTodo" onClick={ () => checkOrUncheckCurrentItem(props.listItem) } value={props.todoId} /> { props.listItem }</li>
+        )
+    }
+
+    function ShoppingList() {
+
+        // const todos = ["Learn Reactjs", "Learn Monogodb", "Learn Nodejs", "Become MERN Stack Developer"];
+
+        const todos = [
+            {todoId: 1, todoItem: "Learn Reactjs"},
+            {todoId: 2, todoItem: "Learn Monogodb"},
+            {todoId: 3, todoItem: "Learn Nodejs"},
+            {todoId: 4, todoItem: "Become MERN Stack Developer"},
+        ];
+        
+        return (
+            <div>
+                <h1>Hey, I'm Trupti Patle, this is my 2022 learning list</h1>
+                <ul>
+                    { todos.map((todo) => <Item listItem={ todo.todoItem } todoId={ todo.todoId } />) }
+                </ul>
+            </div>
+        );
+
+    }
+
+
+    ReactDOM.render(<ShoppingList />, document.getElementById('root'))
+  </script>
+
+</body>
+
+</html>
